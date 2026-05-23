@@ -913,7 +913,7 @@ footer {
   gap: 0.45rem;
   letter-spacing: 0.08em;
   margin-left: auto;
-  margin-right: -0.4rem;
+  margin-right: -0.9rem;
   text-transform: uppercase;
 }
 
@@ -1051,7 +1051,16 @@ footer {
     width: 100%;
   }
 
-  
+  .news-ticker {
+  position: relative;
+  margin-top: -0.8rem;
+  margin-bottom: 0.5rem;
+
+  top: auto;
+  bottom: auto;
+
+  z-index: 1;
+}
 
   .hero-shell,
   .hero-content {
