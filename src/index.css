@@ -1023,7 +1023,7 @@ footer {
   0 0 24px rgba(255, 40, 60, 0.18),
   inset 0 1px 0 rgba(255,255,255,0.06);
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
 
   border-radius: 14px;
 
@@ -1046,14 +1046,14 @@ footer {
   .nav-links a {
     padding: 0.66rem 0.72rem;
     text-align: center;
-    border-bottom: 1px solid rgba(139, 127, 127, 0.589);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 0.9rem;
     width: 100%;
   }
 
   .news-ticker {
   position: relative;
-  margin-top: -0.8rem;
+  margin-top: -3.2rem;
   margin-bottom: 0.5rem;
 
   top: auto;
@@ -1064,7 +1064,8 @@ footer {
 
   .hero-shell,
   .hero-content {
-    min-height: min(84svh, 900px);
+    min-height: auto;
+    padding-bottom: 0;
   }
 
   .hero-image {
