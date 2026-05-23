@@ -912,7 +912,7 @@ footer {
   font-weight: 900;
   gap: 0.45rem;
   letter-spacing: 0.08em;
-  margin-left: 1rem;
+  margin-left: auto;
   text-transform: uppercase;
 }
 
@@ -960,18 +960,37 @@ footer {
   }
 
   .nav-toggle {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
   color: white;
   cursor: pointer;
-  display: grid;
-  height: 2.2rem;
-  width: 2.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
   padding: 0;
-  margin-left: auto;
+
+  font-size: 0.95rem;
+
+  margin-left: 0.7rem;
+
   transition: all 0.25s ease;
+}
+
+.nav-toggle:hover {
+  color: #ff4052;
+
+  text-shadow:
+    0 0 10px rgba(255, 64, 82, 0.8),
+    0 0 24px rgba(255, 64, 82, 0.4);
+
+  transform: scale(1.08);
 }
 
 
