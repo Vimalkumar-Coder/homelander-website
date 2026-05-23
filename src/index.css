@@ -50,6 +50,8 @@ a {
 #root,
 .site-shell {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .site-shell {
@@ -152,8 +154,9 @@ a {
 
 .nav-links {
   display: flex;
-  gap: 0.4rem;
-  margin-left: auto;
+  gap: 1.2rem;
+  align-items: center;
+  transform: translateX(300px);
 }
 
 .nav-links a {
@@ -203,6 +206,7 @@ a {
   min-height: min(88svh, 920px);
   position: relative;
   padding-bottom: 2rem;
+  transition: transform 0.15s ease-out;
 }
 
 .hero-image,
@@ -913,7 +917,7 @@ footer {
   gap: 0.45rem;
   letter-spacing: 0.08em;
   margin-left: auto;
-  margin-right: -0.9rem;
+  padding-right: 0rem;
   text-transform: uppercase;
 }
 
@@ -988,6 +992,7 @@ footer {
   margin-left: 0.7rem;
 
   position: relative;
+  z-index: 9999;
   top: -1px;
 
   transition: all 0.25s ease;
@@ -1022,21 +1027,15 @@ footer {
   box-shadow:
   0 0 24px rgba(255, 40, 60, 0.18),
   inset 0 1px 0 rgba(255,255,255,0.06);
-
   border: 1px solid rgba(255,255,255,0.08);
-
   border-radius: 14px;
-
   backdrop-filter: blur(20px);
-
   padding: 1rem;
-
   display: none;
   flex-direction: column;
-
   gap: 0.5rem;
-
-  z-index: 100;
+  position: relative;
+  z-index: 9999;
 }
 
   .nav-links.open {
@@ -1055,7 +1054,9 @@ footer {
   position: relative;
   margin-top: -3.2rem;
   margin-bottom: 0.5rem;
-
+  padding: 0.55rem 0;
+  min-height: 36px;
+  font-size: 0.54rem;
   top: auto;
   bottom: auto;
 
@@ -1069,13 +1070,35 @@ footer {
   }
 
   .hero-image {
-    background-position: 63% 18%;
+    .hero-image {
+  background-position: 58% top;
+  background-size: cover;
+
+  filter:
+    brightness(1.18)
+    contrast(1.12)
+    saturate(1.08);
+
+  opacity: 1;
+}
   }
 
   .hero-grade {
-    background:
-      linear-gradient(90deg, rgba(2, 5, 13, 0.96), rgba(3, 8, 19, 0.54)),
-      linear-gradient(180deg, rgba(3, 6, 15, 0.12), #05070d 100%);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 5, 13, 0.72),
+      rgba(3, 8, 19, 0.22)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 6, 15, 0.08),
+      #05070d 100%
+    );
+}
+
+  .cloud-bank {
+    opacity: 0.18;
   }
 
   .hero-eyes {
@@ -1084,11 +1107,43 @@ footer {
       radial-gradient(circle at 46.1% 15.3%, rgba(255, 82, 92, 0.96) 0 0.14rem, rgba(255, 48, 66, 0.44) 0.2rem, transparent 0.98rem);
   }
 
+  .hide-mobile {
+    display: none;
+  }
+  
   .about-grid,
   .form-layout,
   .form-layout.reverse {
     grid-template-columns: 1fr;
   }
+
+  .menu-toggle {
+    margin-left: 0.8rem;
+  }
+
+  .broadcast-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.broadcast-bar {
+  display: flex;
+  align-items: center;
+}
+
+.broadcast-copy {
+  flex: 0 0 55%;
+}
+
+.live-indicator {
+  transform: translateX(15px);
+  margin-right: 0rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.68rem;
+}
 
   .complaint-copy {
     justify-self: stretch;
@@ -1170,4 +1225,26 @@ footer {
     opacity: 1;
     transform: none;
   }
+}
+
+.mouse-glow {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+
+  background: rgba(0, 170, 255, 0.20);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  filter: blur(60px);
+
+  z-index: 9999;
+
+  transition:
+    left 0.08s linear,
+    top 0.08s linear;
 }

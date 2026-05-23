@@ -13,6 +13,7 @@ import {
   Zap
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { transform } from "zod/v4";
 
 const navItems = [
   { href: "#top", label: "Arrival" },
@@ -218,6 +219,14 @@ export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [mousePosition, setMousePosition] = useState({
+  x: 0,
+  y: 0
+});
+  const [parallax, setParallax] = useState({
+  x: 0,
+  y: 0
+});
   const [member, setMember] = useState(emptyMember);
   const [complaint, setComplaint] = useState(emptyComplaint);
   const [memberErrors, setMemberErrors] = useState({});
@@ -267,8 +276,29 @@ observer.observe(counter);
   return () => window.removeEventListener("scroll", onScroll);
 }, []);
 
+useEffect(() => {
+ const moveGlow = (e) => {
 
-  useEffect(() => {
+  setMousePosition({
+    x: e.clientX,
+    y: e.clientY
+  });
+
+  setParallax({
+    x: (window.innerWidth / 2 - e.clientX) / 40,
+    y: (window.innerHeight / 2 - e.clientY) / 40
+  });
+
+};
+
+  window.addEventListener("mousemove", moveGlow);
+
+  return () => {
+    window.removeEventListener("mousemove", moveGlow);
+  };
+}, []);
+  
+useEffect(() => {
     if (!window.location.hash) {
       return;
     }
@@ -329,7 +359,16 @@ observer.observe(counter);
   }
 
   return (
-    <main className="site-shell">
+    <div>
+  <div
+    className="mouse-glow"
+    style={{
+      left: `${mousePosition.x}px`,
+      top: `${mousePosition.y}px`
+    }}
+  />
+
+  <main className="site-shell">
       <header className={`site-nav ${scrolled ? "scrolled" : ""}`}>
         <a className="brand" href="#top" aria-label="Protector Broadcast home">
           <span>
@@ -369,7 +408,16 @@ observer.observe(counter);
         </button>
       </header>
 
-      <section className="hero-shell" id="top">
+      <section
+        className="hero"
+        id="top"
+        style={{
+          transform:
+          window.innerWidth > 768
+            ? `translate(${parallax.x}px, ${parallax.y}px)`
+            : `translate(0px, 0px)`
+        }}
+        >
         <div className="hero-image" aria-hidden="true" />
         <div className="hero-grade" aria-hidden="true" />
         <div className="flag-wash" aria-hidden="true" />
@@ -381,7 +429,7 @@ observer.observe(counter);
           <Reveal>
             <p className="eyebrow">
               <Flag size={15} />
-              Civic morale transmission
+              Civic morale<span className="hide-mobile">TRANSMISSION</span>
             </p>
             <h1>The Protector of <span className="america-glow">AMERICA</span></h1>
             <p className="hero-subtitle">Strength. Justice. Superiority.</p>
@@ -399,7 +447,7 @@ observer.observe(counter);
 
       <div className="news-ticker">
        <div className="news-track">
-         BREAKING: Vimalkumar secures eastern airspace • National morale reaches historic peak • Vought confirms uninterrupted skyline surveillance • Public confidence remains at 97%.
+         BREAKING: Vklander secures eastern airspace • National morale reaches historic peak • Vought confirms uninterrupted skyline surveillance • Public confidence remains at 97%.
        </div>
       </div>
 
@@ -687,5 +735,6 @@ observer.observe(counter);
         notifications={notifications}
       />
     </main>
+      </div>
   );
 }
