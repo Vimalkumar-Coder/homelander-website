@@ -447,7 +447,7 @@ useEffect(() => {
 
       <div className="news-ticker">
        <div className="news-track">
-         BREAKING: Vklander secures eastern airspace • National morale reaches historic peak • Vought confirms uninterrupted skyline surveillance • Public confidence remains at 97%.
+         BREAKING: homelander secures eastern airspace • National morale reaches historic peak • Vought confirms uninterrupted skyline surveillance • Public confidence remains at 97%.
        </div>
       </div>
 

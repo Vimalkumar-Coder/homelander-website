@@ -826,10 +826,11 @@ footer {
   background: rgba(5, 10, 20, 0.72);
   border-top: 1px solid rgba(255, 80, 90, 0.08);
   border-bottom: 1px solid rgba(255, 80, 90, 0.08);
-  bottom: -4.5rem;
+  bottom: 0rem;
   overflow: hidden;
   padding: 0.9rem 0;
-  position: absolute;
+  position: relative;
+  margin-top: -4rem;
   width: 100%;
 }
 
@@ -1012,29 +1013,38 @@ footer {
   .nav-links {
   position: absolute;
 
-  top: 4.8rem;
-  right: 1rem;
+  top: 5.2rem;
+
+  right: 0.9rem;
+  left: auto;
+  transform: none;
 
   width: 13rem;
 
   background:
-  linear-gradient(
-    135deg,
-    rgba(10, 18, 35, 0.88),
-    rgba(6, 10, 22, 0.92)
-  );
+    linear-gradient(
+      135deg,
+      rgba(10, 18, 35, 0.92),
+      rgba(6, 10, 22, 0.96)
+    );
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(20px);
 
   box-shadow:
-  0 0 24px rgba(255, 40, 60, 0.18),
-  inset 0 1px 0 rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  backdrop-filter: blur(20px);
+    0 10px 40px rgba(0,0,0,0.45);
+
   padding: 1rem;
+
   display: none;
+
   flex-direction: column;
-  gap: 0.5rem;
-  position: relative;
+
+  gap: 0.8rem;
+
   z-index: 9999;
 }
 
